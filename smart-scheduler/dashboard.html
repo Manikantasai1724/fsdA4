@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — SmartScheduler</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-dashboard">
+<div class="page-wrapper">
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><div class="brand-icon">🎓</div>SmartScheduler</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="timetable.html">Timetable</a></li>
+        <li><a href="classrooms.html">Classrooms</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="subjects.html">Subjects</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle-btn" title="Toggle theme">☀️</button>
+        <a href="settings.html" class="btn-icon" title="Profile">👤</a>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu">
+      <a href="index.html">🏠 Home</a>
+      <a href="dashboard.html" class="active">📊 Dashboard</a>
+      <a href="timetable.html">🗓 Timetable</a>
+      <a href="classrooms.html">🏫 Classrooms</a>
+      <a href="faculty.html">👤 Faculty</a>
+      <a href="subjects.html">📚 Subjects</a>
+      <a href="settings.html">⚙️ Settings</a>
+    </div>
+  </nav>
+
+  <main style="padding:40px 0 80px">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="page-header" style="border:none;padding-bottom:0;margin-bottom:28px">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span>›</span><span>Dashboard</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px">
+          <div>
+            <h1 class="slide-up">Control Center</h1>
+            <p style="color:var(--text-muted);margin-top:4px" class="fade-in">
+              Academic Year 2024–25 · Semester 5 · Computer Science Dept.
+            </p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a href="timetable.html" class="btn btn-primary">🗓 Generate Timetable</a>
+            <button class="btn btn-ghost" onclick="showToast('Report exported!','success','📥')">📥 Export Report</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="stats-grid stagger">
+        <div class="stat-card stat-blue">
+          <div class="stat-icon">🏫</div>
+          <div class="stat-body">
+            <div class="stat-value"><span class="counter" data-target="9">0</span></div>
+            <div class="stat-label">Total Classrooms</div>
+            <div class="stat-trend up">▲ 1 added this semester</div>
+          </div>
+        </div>
+        <div class="stat-card stat-purple">
+          <div class="stat-icon">👩‍🏫</div>
+          <div class="stat-body">
+            <div class="stat-value"><span class="counter" data-target="7">0</span></div>
+            <div class="stat-label">Faculty Members</div>
+            <div class="stat-trend down">▼ 1 on leave</div>
+          </div>
+        </div>
+        <div class="stat-card stat-teal">
+          <div class="stat-icon">📚</div>
+          <div class="stat-body">
+            <div class="stat-value"><span class="counter" data-target="8">0</span></div>
+            <div class="stat-label">Active Subjects</div>
+            <div class="stat-trend up">▲ Sem 5 curriculum</div>
+          </div>
+        </div>
+        <div class="stat-card stat-amber">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-body">
+            <div class="stat-value"><span class="counter" data-target="0">0</span></div>
+            <div class="stat-label">Schedule Conflicts</div>
+            <div class="stat-trend up">✓ Fully resolved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-bottom:24px" class="fade-in">
+
+        <!-- Quick Navigation Tiles -->
+        <div class="card">
+          <div class="card-header">
+            <h2 style="font-size:1rem">Quick Navigation</h2>
+            <span class="badge badge-blue">6 modules</span>
+          </div>
+          <div class="quick-tiles">
+            <a href="timetable.html" class="quick-tile">
+              <span class="tile-icon">🗓</span>
+              <h3>Timetable</h3>
+              <p>Generate & manage schedules</p>
+            </a>
+            <a href="classrooms.html" class="quick-tile">
+              <span class="tile-icon">🏫</span>
+              <h3>Classrooms</h3>
+              <p>Room availability & capacity</p>
+            </a>
+            <a href="faculty.html" class="quick-tile">
+              <span class="tile-icon">👩‍🏫</span>
+              <h3>Faculty</h3>
+              <p>Teaching staff management</p>
+            </a>
+            <a href="subjects.html" class="quick-tile">
+              <span class="tile-icon">📚</span>
+              <h3>Subjects</h3>
+              <p>Course codes & assignments</p>
+            </a>
+            <a href="settings.html" class="quick-tile">
+              <span class="tile-icon">⚙️</span>
+              <h3>Settings</h3>
+              <p>Profile & preferences</p>
+            </a>
+            <a href="login.html" class="quick-tile">
+              <span class="tile-icon">🔐</span>
+              <h3>Access Control</h3>
+              <p>Login & user management</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Activity Feed -->
+        <div class="card">
+          <div class="card-header">
+            <h2 style="font-size:1rem">Recent Activity</h2>
+            <span style="font-size:0.75rem;color:var(--text-muted)">Today</span>
+          </div>
+          <div id="activity-feed"></div>
+        </div>
+      </div>
+
+      <!-- Lower row -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px" class="fade-in">
+
+        <!-- Room Status -->
+        <div class="card">
+          <div class="card-header">
+            <h2 style="font-size:1rem">Room Status</h2>
+            <a href="classrooms.html" style="font-size:0.78rem;color:var(--accent)">View all →</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:0.85rem;display:flex;align-items:center;gap:6px">
+                <span style="width:8px;height:8px;border-radius:50%;background:var(--success);display:inline-block"></span>
+                Available
+              </span>
+              <span style="font-weight:700;font-family:'Syne',sans-serif">6</span>
+            </div>
+            <div style="height:6px;background:var(--border);border-radius:99px;overflow:hidden">
+              <div style="width:66%;height:100%;background:var(--success);border-radius:99px"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:0.85rem;display:flex;align-items:center;gap:6px">
+                <span style="width:8px;height:8px;border-radius:50%;background:var(--danger);display:inline-block"></span>
+                Occupied
+              </span>
+              <span style="font-weight:700;font-family:'Syne',sans-serif">2</span>
+            </div>
+            <div style="height:6px;background:var(--border);border-radius:99px;overflow:hidden">
+              <div style="width:22%;height:100%;background:var(--danger);border-radius:99px"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:0.85rem;display:flex;align-items:center;gap:6px">
+                <span style="width:8px;height:8px;border-radius:50%;background:var(--warn);display:inline-block"></span>
+                Maintenance
+              </span>
+              <span style="font-weight:700;font-family:'Syne',sans-serif">1</span>
+            </div>
+            <div style="height:6px;background:var(--border);border-radius:99px;overflow:hidden">
+              <div style="width:11%;height:100%;background:var(--warn);border-radius:99px"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty Load -->
+        <div class="card">
+          <div class="card-header">
+            <h2 style="font-size:1rem">Faculty Load</h2>
+            <a href="faculty.html" style="font-size:0.78rem;color:var(--accent)">View all →</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:32px;height:32px;border-radius:8px;background:rgba(61,142,248,0.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;font-family:'Syne',sans-serif;flex-shrink:0">AM</div>
+              <div style="flex:1">
+                <div style="font-size:0.82rem;font-weight:600;margin-bottom:3px">Dr. Arjun Mehta</div>
+                <div style="height:4px;background:var(--border);border-radius:99px;overflow:hidden"><div style="width:80%;height:100%;background:var(--accent);border-radius:99px"></div></div>
+              </div>
+              <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600">8h</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:32px;height:32px;border-radius:8px;background:rgba(124,92,246,0.15);color:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;font-family:'Syne',sans-serif;flex-shrink:0">SR</div>
+              <div style="flex:1">
+                <div style="font-size:0.82rem;font-weight:600;margin-bottom:3px">Prof. Sunita Rao</div>
+                <div style="height:4px;background:var(--border);border-radius:99px;overflow:hidden"><div style="width:30%;height:100%;background:var(--accent2);border-radius:99px"></div></div>
+              </div>
+              <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600">3h</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:32px;height:32px;border-radius:8px;background:rgba(0,212,168,0.12);color:var(--accent3);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;font-family:'Syne',sans-serif;flex-shrink:0">VN</div>
+              <div style="flex:1">
+                <div style="font-size:0.82rem;font-weight:600;margin-bottom:3px">Dr. Vikram Nair</div>
+                <div style="height:4px;background:var(--border);border-radius:99px;overflow:hidden"><div style="width:40%;height:100%;background:var(--accent3);border-radius:99px"></div></div>
+              </div>
+              <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600">4h</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:32px;height:32px;border-radius:8px;background:rgba(245,166,35,0.12);color:var(--warn);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:800;font-family:'Syne',sans-serif;flex-shrink:0">PS</div>
+              <div style="flex:1">
+                <div style="font-size:0.82rem;font-weight:600;margin-bottom:3px">Dr. Priya Sharma</div>
+                <div style="height:4px;background:var(--border);border-radius:99px;overflow:hidden"><div style="width:30%;height:100%;background:var(--warn);border-radius:99px"></div></div>
+              </div>
+              <span style="font-size:0.8rem;color:var(--text-muted);font-weight:600">3h</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming Actions -->
+        <div class="card">
+          <div class="card-header">
+            <h2 style="font-size:1rem">Pending Actions</h2>
+            <span class="badge badge-red">3</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="padding:10px;background:rgba(245,71,106,0.08);border:1px solid rgba(245,71,106,0.2);border-radius:8px;font-size:0.82rem">
+              <div style="font-weight:600;color:var(--danger);margin-bottom:3px">⚠️ CR-301 Unavailable</div>
+              <div style="color:var(--text-muted)">Maintenance until Friday. Reschedule 2 classes.</div>
+            </div>
+            <div style="padding:10px;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);border-radius:8px;font-size:0.82rem">
+              <div style="font-weight:600;color:var(--warn);margin-bottom:3px">⏰ Faculty Leave</div>
+              <div style="color:var(--text-muted)">Prof. Pillai on leave. CS305 needs substitute.</div>
+            </div>
+            <div style="padding:10px;background:rgba(61,142,248,0.08);border:1px solid rgba(61,142,248,0.2);border-radius:8px;font-size:0.82rem">
+              <div style="font-weight:600;color:var(--accent);margin-bottom:3px">📋 Sem 6 Planning</div>
+              <div style="color:var(--text-muted)">New semester timetable due in 2 weeks.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">🎓 SmartScheduler</div>
+        <div class="footer-links">
+          <a href="timetable.html">Timetable</a>
+          <a href="classrooms.html">Classrooms</a>
+          <a href="faculty.html">Faculty</a>
+        </div>
+        <div class="footer-text">© 2024 SmartScheduler</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

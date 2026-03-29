@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — SmartScheduler</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><div class="brand-icon">🎓</div>SmartScheduler</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="timetable.html">Timetable</a></li>
+        <li><a href="classrooms.html">Classrooms</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="subjects.html">Subjects</a></li>
+        <li><a href="settings.html" class="active">Settings</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle-btn" title="Toggle theme">☀️</button>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu">
+      <a href="index.html">🏠 Home</a>
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="timetable.html">🗓 Timetable</a>
+      <a href="classrooms.html">🏫 Classrooms</a>
+      <a href="faculty.html">👤 Faculty</a>
+      <a href="subjects.html">📚 Subjects</a>
+      <a href="settings.html" class="active">⚙️ Settings</a>
+    </div>
+  </nav>
+
+  <main style="padding:40px 0 80px">
+    <div class="container" style="max-width:860px">
+
+      <!-- Header -->
+      <div class="page-header" style="border:none;padding-bottom:0;margin-bottom:28px">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span>›</span>
+          <a href="dashboard.html">Dashboard</a><span>›</span>
+          <span>Settings</span>
+        </div>
+        <h1 class="slide-up">Profile & Settings</h1>
+        <p class="fade-in" style="color:var(--text-muted);margin-top:6px">
+          Manage your account, preferences, and application configuration.
+        </p>
+      </div>
+
+      <!-- Profile Header Card -->
+      <div class="profile-header fade-in">
+        <div class="profile-avatar-lg" id="profile-avatar-display">AK</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div>
+              <h2 id="profile-name-display">Aryan Kumar</h2>
+              <p style="color:var(--text-muted);font-size:0.88rem">aryan.kumar@college.edu · System Administrator</p>
+              <div class="profile-badges">
+                <span class="badge badge-blue">Admin</span>
+                <span class="badge badge-green">Active</span>
+                <span class="badge badge-purple">CS Dept</span>
+              </div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="showToast('Photo upload coming soon!','info','📷')">
+              📷 Change Photo
+            </button>
+          </div>
+          <div style="display:flex;gap:24px;margin-top:16px;flex-wrap:wrap">
+            <div style="text-align:center">
+              <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent)">14</div>
+              <div style="font-size:0.72rem;color:var(--text-muted)">Timetables Generated</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent2)">3</div>
+              <div style="font-size:0.72rem;color:var(--text-muted)">Semesters Managed</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--accent3)">98%</div>
+              <div style="font-size:0.72rem;color:var(--text-muted)">Schedule Accuracy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Settings Grid -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:0" class="stagger">
+
+        <!-- Profile Form -->
+        <div class="card">
+          <div class="settings-group" style="margin:0">
+            <h3>Personal Information</h3>
+            <form id="profile-form">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" id="profile-name" value="Aryan Kumar"
+                  oninput="document.getElementById('profile-name-display').textContent=this.value||'—';document.getElementById('profile-avatar-display').textContent=this.value.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2)||'?'" />
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" class="form-control" value="aryan.kumar@college.edu" />
+              </div>
+              <div class="form-group">
+                <label>Role</label>
+                <select class="form-control">
+                  <option>System Administrator</option>
+                  <option>Faculty</option>
+                  <option>HOD</option>
+                  <option>Student</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Department</label>
+                <select class="form-control">
+                  <option>Computer Science</option>
+                  <option>Electronics</option>
+                  <option>Mechanical</option>
+                  <option>Civil</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom:0">
+                <label>Phone Number</label>
+                <input type="tel" class="form-control" placeholder="+91 98765 43210" value="+91 98765 43210" />
+              </div>
+              <div style="margin-top:18px;display:flex;gap:10px">
+                <button type="submit" class="btn btn-primary" style="flex:1;justify-content:center">
+                  💾 Save Profile
+                </button>
+                <button type="button" class="btn btn-ghost" onclick="showToast('Changes discarded','info')">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Preferences & Security -->
+        <div style="display:flex;flex-direction:column;gap:20px">
+
+          <!-- Appearance -->
+          <div class="card">
+            <div class="settings-group" style="margin:0">
+              <h3>Appearance</h3>
+              <div class="setting-row">
+                <div>
+                  <div class="setting-label">Dark / Light Mode</div>
+                  <div class="setting-desc">Toggle the interface theme</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="settings-theme-toggle" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="setting-row">
+                <div>
+                  <div class="setting-label">Compact View</div>
+                  <div class="setting-desc">Reduce spacing for more info density</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="compact-toggle" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="setting-row" style="border:none">
+                <div>
+                  <div class="setting-label">Accent Color</div>
+                  <div class="setting-desc">Choose your UI accent</div>
+                </div>
+                <div style="display:flex;gap:6px">
+                  <div style="width:20px;height:20px;border-radius:50%;background:#3d8ef8;cursor:pointer;border:2px solid white"
+                    onclick="setAccent('#3d8ef8','#2563eb');showToast('Blue accent applied','info','🎨')"></div>
+                  <div style="width:20px;height:20px;border-radius:50%;background:#7c5cf6;cursor:pointer"
+                    onclick="setAccent('#7c5cf6','#6d28d9');showToast('Purple accent applied','info','🎨')"></div>
+                  <div style="width:20px;height:20px;border-radius:50%;background:#00d4a8;cursor:pointer"
+                    onclick="setAccent('#00d4a8','#059669');showToast('Teal accent applied','info','🎨')"></div>
+                  <div style="width:20px;height:20px;border-radius:50%;background:#f5a623;cursor:pointer"
+                    onclick="setAccent('#f5a623','#d97706');showToast('Amber accent applied','info','🎨')"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div class="card">
+            <div class="settings-group" style="margin:0">
+              <h3>Notifications</h3>
+              <div class="setting-row">
+                <div>
+                  <div class="setting-label">Push Notifications</div>
+                  <div class="setting-desc">Conflict alerts and schedule updates</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="notif-toggle" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="setting-row" style="border:none">
+                <div>
+                  <div class="setting-label">Email Reports</div>
+                  <div class="setting-desc">Weekly summary to your inbox</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Security -->
+          <div class="card">
+            <div class="settings-group" style="margin:0">
+              <h3>Security</h3>
+              <div class="form-group">
+                <label>Current Password</label>
+                <input type="password" class="form-control" placeholder="••••••••" />
+              </div>
+              <div class="form-group">
+                <label>New Password</label>
+                <input type="password" class="form-control" placeholder="Min. 8 characters" />
+              </div>
+              <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:4px"
+                onclick="showToast('Password updated successfully!','success','🔒')">
+                🔒 Update Password
+              </button>
+            </div>
+          </div>
+
+          <!-- Danger Zone -->
+          <div class="card" style="border-color:rgba(245,71,106,0.3)">
+            <div class="settings-group" style="margin:0">
+              <h3 style="color:var(--danger)">Danger Zone</h3>
+              <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:14px">
+                These actions are irreversible. Proceed with caution.
+              </p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <button class="btn btn-ghost btn-sm"
+                  onclick="showToast('All data cleared!','error','🗑')">
+                  🗑 Clear All Data
+                </button>
+                <button class="btn btn-danger btn-sm"
+                  onclick="if(confirm('Are you sure you want to delete this account?'))showToast('Account deletion requested','error','⚠️')">
+                  ⚠️ Delete Account
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">🎓 SmartScheduler</div>
+        <div class="footer-links">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="login.html">Logout</a>
+        </div>
+        <div class="footer-text">© 2024 SmartScheduler</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+<script>
+  function setAccent(color, darker) {
+    document.documentElement.style.setProperty('--accent', color);
+    document.documentElement.style.setProperty('--glow', color + '40');
+  }
+</script>
+</body>
+</html>

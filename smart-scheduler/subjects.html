@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subjects — SmartScheduler</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><div class="brand-icon">🎓</div>SmartScheduler</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="timetable.html">Timetable</a></li>
+        <li><a href="classrooms.html">Classrooms</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="subjects.html" class="active">Subjects</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle-btn" title="Toggle theme">☀️</button>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu">
+      <a href="index.html">🏠 Home</a>
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="timetable.html">🗓 Timetable</a>
+      <a href="classrooms.html">🏫 Classrooms</a>
+      <a href="faculty.html">👤 Faculty</a>
+      <a href="subjects.html" class="active">📚 Subjects</a>
+      <a href="settings.html">⚙️ Settings</a>
+    </div>
+  </nav>
+
+  <main style="padding:40px 0 80px">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="page-header" style="border:none;padding-bottom:0;margin-bottom:28px">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span>›</span>
+          <a href="dashboard.html">Dashboard</a><span>›</span>
+          <span>Subjects</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px">
+          <div>
+            <h1 class="slide-up">Subjects & Courses</h1>
+            <p class="fade-in" style="color:var(--text-muted);margin-top:6px">
+              Manage course codes, faculty assignments, and credit distribution for Sem 5.
+            </p>
+          </div>
+          <button class="btn btn-primary" onclick="showToast('Add subject feature coming soon!','info','🏗')">
+            + Add Subject
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px" class="stagger">
+        <div class="stat-card stat-blue" style="padding:18px">
+          <div class="stat-icon" style="width:40px;height:40px;font-size:1.1rem">📚</div>
+          <div class="stat-body">
+            <div class="stat-value" style="font-size:1.6rem">8</div>
+            <div class="stat-label">Total Subjects</div>
+          </div>
+        </div>
+        <div class="stat-card stat-purple" style="padding:18px">
+          <div class="stat-icon" style="width:40px;height:40px;font-size:1.1rem">⚡</div>
+          <div class="stat-body">
+            <div class="stat-value" style="font-size:1.6rem">27</div>
+            <div class="stat-label">Total Credits</div>
+          </div>
+        </div>
+        <div class="stat-card stat-teal" style="padding:18px">
+          <div class="stat-icon" style="width:40px;height:40px;font-size:1.1rem">🔬</div>
+          <div class="stat-body">
+            <div class="stat-value" style="font-size:1.6rem">3</div>
+            <div class="stat-label">4-Credit Subjects</div>
+          </div>
+        </div>
+        <div class="stat-card stat-amber" style="padding:18px">
+          <div class="stat-icon" style="width:40px;height:40px;font-size:1.1rem">📖</div>
+          <div class="stat-body">
+            <div class="stat-value" style="font-size:1.6rem">5</div>
+            <div class="stat-label">3-Credit Subjects</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color Legend -->
+      <div class="legend" style="margin-bottom:20px" id="sub-color-legend"></div>
+
+      <!-- Search -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap">
+        <div class="search-bar" style="max-width:380px;flex:1">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="subjects-search" placeholder="Search by code, name, or faculty…" />
+        </div>
+        <div class="filter-tabs" style="margin:0">
+          <button class="filter-tab active" onclick="filterSubjectsByCredit(0,this)">All</button>
+          <button class="filter-tab" onclick="filterSubjectsByCredit(4,this)">4-Credit</button>
+          <button class="filter-tab" onclick="filterSubjectsByCredit(3,this)">3-Credit</button>
+        </div>
+      </div>
+
+      <!-- Subjects Grid -->
+      <div class="subjects-grid stagger" id="subjects-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Credit Distribution -->
+      <div class="card" style="margin-top:28px">
+        <div class="card-header">
+          <h2 style="font-size:1rem">Credit Distribution — Sem 5</h2>
+          <span class="badge badge-blue">27 total credits</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px" id="credit-bars"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">🎓 SmartScheduler</div>
+        <div class="footer-links">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="faculty.html">Faculty</a>
+        </div>
+        <div class="footer-text">© 2024 SmartScheduler</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+<script>
+  // Credit filter
+  function filterSubjectsByCredit(credits, btn) {
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    const container = document.getElementById('subjects-grid');
+    const q = document.getElementById('subjects-search').value;
+    const filtered = credits === 0
+      ? DATA.subjects
+      : DATA.subjects.filter(s => s.credits === credits);
+    // Re-render with optional search
+    renderSubjectsFiltered(filtered, q);
+  }
+
+  function renderSubjectsFiltered(list, query) {
+    const container = document.getElementById('subjects-grid');
+    if (!container) return;
+    const filtered = query
+      ? list.filter(s =>
+          s.name.toLowerCase().includes(query.toLowerCase()) ||
+          s.code.toLowerCase().includes(query.toLowerCase()) ||
+          s.faculty.toLowerCase().includes(query.toLowerCase()))
+      : list;
+
+    if (!filtered.length) {
+      container.innerHTML = '<div class="no-results" style="grid-column:1/-1"><span class="nr-icon">📚</span><h3>No subjects found</h3></div>';
+      return;
+    }
+    container.innerHTML = filtered.map(sub => {
+      const color = getSubjectColor(sub.colorIdx);
+      const facultyObj = DATA.faculty.find(f => f.name === sub.faculty);
+      return `
+        <div class="subject-card fade-in">
+          <div class="subject-color-bar" style="background:${color}"></div>
+          <div class="subject-body">
+            <div class="subject-code">${highlightText(sub.code, query)}</div>
+            <div class="subject-name">${highlightText(sub.name, query)}</div>
+            <div class="subject-meta">
+              <span class="badge badge-blue">${highlightText(sub.faculty.split(' ').slice(-2).join(' '), query)}</span>
+              <span class="subject-credits">${sub.credits} credits</span>
+              ${facultyObj ? `<span class="badge ${facultyObj.status === 'Active' ? 'badge-green' : 'badge-amber'}">${facultyObj.status}</span>` : ''}
+            </div>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <div style="width:28px;height:28px;border-radius:8px;background:${color}22;border:1.5px solid ${color}55;display:flex;align-items:center;justify-content:center;font-size:1rem">📖</div>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  // Build credit bars
+  document.addEventListener('DOMContentLoaded', () => {
+    // Color legend
+    const legend = document.getElementById('sub-color-legend');
+    if (legend) {
+      legend.innerHTML = DATA.subjects.map(s => {
+        const color = getSubjectColor(s.colorIdx);
+        return `<div class="legend-item"><div class="legend-dot" style="background:${color}"></div>${s.code}</div>`;
+      }).join('');
+    }
+
+    // Credit bars
+    const bars = document.getElementById('credit-bars');
+    if (bars) {
+      const colors = ['#3d8ef8','#7c5cf6','#00d4a8','#f5a623','#f5476a','#e879f9','#22d3ee','#a3e635'];
+      const maxCredits = 4;
+      bars.innerHTML = DATA.subjects.map((s, i) => `
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="font-size:0.78rem;font-weight:700;width:52px;text-align:right;color:var(--text-muted);font-family:'Syne',sans-serif">${s.code}</div>
+          <div style="flex:1;height:8px;background:var(--border);border-radius:99px;overflow:hidden">
+            <div style="width:${(s.credits / maxCredits) * 100}%;height:100%;background:${colors[i % colors.length]};border-radius:99px;transition:width 0.6s ease"></div>
+          </div>
+          <div style="font-size:0.8rem;font-weight:700;color:var(--text);width:24px">${s.credits}</div>
+        </div>
+      `).join('');
+    }
+  });
+</script>
+</body>
+</html>

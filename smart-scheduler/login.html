@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — SmartScheduler</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- Minimal navbar for login -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">🎓</div>
+        SmartScheduler
+      </a>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle-btn" title="Toggle theme">☀️</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Login Layout ── -->
+  <div class="login-page">
+    <div class="login-container fade-in">
+
+      <!-- Card -->
+      <div class="login-card">
+        <div class="login-logo">
+          <div class="logo-icon">🎓</div>
+          <h1>Welcome Back</h1>
+          <p>Sign in to your SmartScheduler account</p>
+        </div>
+
+        <form id="login-form" novalidate>
+          <!-- Email -->
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <div class="input-group">
+              <span class="input-icon">✉️</span>
+              <input
+                type="email"
+                id="login-email"
+                class="form-control"
+                placeholder="admin@college.edu"
+                autocomplete="email"
+              />
+            </div>
+            <div class="form-error" id="email-error"></div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <div class="input-group" style="position:relative">
+              <span class="input-icon">🔒</span>
+              <input
+                type="password"
+                id="login-password"
+                class="form-control"
+                placeholder="Min. 6 characters"
+                autocomplete="current-password"
+              />
+              <button type="button" class="password-toggle" tabindex="-1">👁</button>
+            </div>
+            <div class="form-error" id="pass-error"></div>
+          </div>
+
+          <!-- Remember + Forgot -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:0.85rem;cursor:pointer;color:var(--text-muted)">
+              <input type="checkbox" style="accent-color:var(--accent)" />
+              Remember me
+            </label>
+            <a href="#" style="font-size:0.85rem" onclick="showToast('Password reset link sent!','info','📧');return false">Forgot password?</a>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" id="login-btn" class="btn btn-primary" style="width:100%;justify-content:center;padding:13px">
+            Sign In →
+          </button>
+        </form>
+
+        <div class="divider">or continue with</div>
+
+        <!-- Demo accounts -->
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <button class="btn btn-ghost" style="justify-content:center;font-size:0.85rem"
+            onclick="document.getElementById('login-email').value='admin@college.edu';document.getElementById('login-password').value='admin123';showToast('Demo credentials filled','info','✏️')">
+            🎓 Use Demo — Admin Account
+          </button>
+          <button class="btn btn-ghost" style="justify-content:center;font-size:0.85rem"
+            onclick="document.getElementById('login-email').value='faculty@college.edu';document.getElementById('login-password').value='faculty123';showToast('Faculty demo credentials filled','info','✏️')">
+            👩‍🏫 Use Demo — Faculty Account
+          </button>
+        </div>
+
+        <div class="login-footer">
+          New to SmartScheduler?
+          <a href="#" onclick="showToast('Registration coming soon!','info','🚀');return false">
+            Create an account
+          </a>
+        </div>
+      </div>
+
+      <!-- Info below card -->
+      <div style="margin-top:24px;text-align:center">
+        <p style="font-size:0.78rem;color:var(--text-dim)">
+          🔐 Secure · FERPA Compliant · Role-Based Access Control
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartScheduler — Intelligent Classroom & Timetable Management</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">🎓</div>
+        SmartScheduler
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="timetable.html">Timetable</a></li>
+        <li><a href="classrooms.html">Classrooms</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="subjects.html">Subjects</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle-btn" title="Toggle theme">☀️</button>
+        <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+        <button class="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu">
+      <a href="index.html" class="active">🏠 Home</a>
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="timetable.html">🗓 Timetable</a>
+      <a href="classrooms.html">🏫 Classrooms</a>
+      <a href="faculty.html">👤 Faculty</a>
+      <a href="subjects.html">📚 Subjects</a>
+      <a href="settings.html">⚙️ Settings</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="container">
+      <div style="max-width:700px">
+        <div class="hero-eyebrow fade-in">
+          <span>⚡</span> AI-Assisted Academic Scheduling Platform
+        </div>
+        <h1 class="slide-up" style="animation-delay:0.1s">
+          Smarter Schedules.<br>Zero Conflicts.
+        </h1>
+        <p class="slide-up" style="animation-delay:0.2s">
+          SmartScheduler eliminates classroom shortages, faculty clashes, and
+          timetable overlaps — giving colleges a real-time, intelligent scheduling
+          system built for the modern academic world.
+        </p>
+        <div class="hero-cta slide-up" style="animation-delay:0.3s">
+          <a href="timetable.html" class="btn btn-primary btn-lg">
+            🗓 Generate Timetable
+          </a>
+          <a href="dashboard.html" class="btn btn-ghost btn-lg">
+            📊 View Dashboard
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats strip -->
+      <div class="hero-grid stagger" style="max-width:700px;margin-top:56px">
+        <div class="hero-mini-card">
+          <div class="hero-mini-icon" style="background:rgba(61,142,248,0.12);color:var(--accent)">🏫</div>
+          <div>
+            <h3>9 Classrooms</h3>
+            <p>Labs, lecture halls & auditoriums managed in real time</p>
+          </div>
+        </div>
+        <div class="hero-mini-card">
+          <div class="hero-mini-icon" style="background:rgba(124,92,246,0.12);color:var(--accent2)">👩‍🏫</div>
+          <div>
+            <h3>7 Faculty Members</h3>
+            <p>Conflict-free assignment across all departments</p>
+          </div>
+        </div>
+        <div class="hero-mini-card">
+          <div class="hero-mini-icon" style="background:rgba(0,212,168,0.1);color:var(--accent3)">📚</div>
+          <div>
+            <h3>8 Subjects</h3>
+            <p>Auto-scheduled with credit-hour balancing</p>
+          </div>
+        </div>
+        <div class="hero-mini-card">
+          <div class="hero-mini-icon" style="background:rgba(245,166,35,0.1);color:var(--warn)">⚡</div>
+          <div>
+            <h3>0 Conflicts</h3>
+            <p>Algorithm-driven clash prevention on every run</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Problem Statement ── -->
+  <section style="padding:64px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="section-header text-center" style="margin:0 auto 40px;max-width:600px">
+        <span class="eyebrow">The Problem</span>
+        <h2>Why Scheduling Is Broken in Most Colleges</h2>
+        <p>Manual timetabling leads to cascading failures — from double-booked rooms to burned-out faculty and frustrated students.</p>
+      </div>
+
+      <div class="features-grid stagger">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(245,71,106,0.12);color:var(--danger)">🚫</div>
+          <h3>Classroom Double-Booking</h3>
+          <p>Two classes scheduled in the same room at the same time — a common disaster in manual systems that disrupts entire departments.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(245,166,35,0.12);color:var(--warn)">⏰</div>
+          <h3>Faculty Overload & Conflicts</h3>
+          <p>Professors assigned to multiple classes simultaneously, leading to absenteeism, poor teaching quality, and staff burnout.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(124,92,246,0.15);color:var(--accent2)">🔄</div>
+          <h3>Last-Minute Changes</h3>
+          <p>One schedule modification cascades into dozens of changes, consuming hours of admin time with every revision cycle.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(61,142,248,0.12);color:var(--accent)">📊</div>
+          <h3>No Real-Time Visibility</h3>
+          <p>Stakeholders operate on outdated spreadsheets with no live view of room availability, faculty load, or schedule conflicts.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(0,212,168,0.1);color:var(--accent3)">🎓</div>
+          <h3>Student Experience Suffers</h3>
+          <p>Poorly scheduled timetables leave students with back-to-back classes, long gaps, or clashing exam slots with no recourse.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(232,121,249,0.12);color:#e879f9">🏗</div>
+          <h3>Underutilized Infrastructure</h3>
+          <p>Labs and large lecture halls remain empty while smaller rooms are overcrowded — pure resource waste with no optimization.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Solution Features ── -->
+  <section style="padding:72px 0">
+    <div class="container">
+      <div class="section-header" style="margin:0 auto 40px">
+        <span class="eyebrow">Our Solution</span>
+        <h2>Everything You Need to Schedule Smarter</h2>
+        <p>SmartScheduler combines constraint-solving logic with a modern interface to automate the entire scheduling workflow.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px" class="stagger">
+        <!-- Feature rows -->
+        <div class="card flex gap-4" style="align-items:flex-start">
+          <div style="font-size:1.8rem;flex-shrink:0">🗓</div>
+          <div>
+            <h3 style="font-size:1rem;margin-bottom:6px">Conflict-Free Timetable Generation</h3>
+            <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.6">One-click generation that respects faculty availability, room capacity, and credit-hour distribution simultaneously.</p>
+          </div>
+        </div>
+        <div class="card flex gap-4" style="align-items:flex-start">
+          <div style="font-size:1.8rem;flex-shrink:0">🏫</div>
+          <div>
+            <h3 style="font-size:1rem;margin-bottom:6px">Live Classroom Management</h3>
+            <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.6">Track availability, occupancy, amenities, and maintenance status for every room across all floors.</p>
+          </div>
+        </div>
+        <div class="card flex gap-4" style="align-items:flex-start">
+          <div style="font-size:1.8rem;flex-shrink:0">👩‍🏫</div>
+          <div>
+            <h3 style="font-size:1rem;margin-bottom:6px">Faculty Load Balancing</h3>
+            <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.6">Visualize teaching loads, filter by department, and ensure no faculty member is over-assigned.</p>
+          </div>
+        </div>
+        <div class="card flex gap-4" style="align-items:flex-start">
+          <div style="font-size:1.8rem;flex-shrink:0">🎨</div>
+          <div>
+            <h3 style="font-size:1rem;margin-bottom:6px">Color-Coded Visual Schedule</h3>
+            <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.6">Each subject gets a distinct color in the timetable grid — instantly scannable for students and faculty alike.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:48px">
+        <a href="login.html" class="btn btn-primary btn-lg">
+          Get Started — It's Free →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">🎓 SmartScheduler</div>
+          <div class="footer-text" style="margin-top:4px">Intelligent Academic Scheduling System</div>
+        </div>
+        <div class="footer-links">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="timetable.html">Timetable</a>
+          <a href="classrooms.html">Classrooms</a>
+          <a href="settings.html">Settings</a>
+        </div>
+        <div class="footer-text">
+          © 2024 SmartScheduler · Built for B.Tech Students
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /page-wrapper -->
+<script src="script.js"></script>
+</body>
+</html>

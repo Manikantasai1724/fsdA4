@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timetable Scheduler — SmartScheduler</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><div class="brand-icon">🎓</div>SmartScheduler</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="timetable.html" class="active">Timetable</a></li>
+        <li><a href="classrooms.html">Classrooms</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="subjects.html">Subjects</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle-btn" title="Toggle theme">☀️</button>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu">
+      <a href="index.html">🏠 Home</a>
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="timetable.html" class="active">🗓 Timetable</a>
+      <a href="classrooms.html">🏫 Classrooms</a>
+      <a href="faculty.html">👤 Faculty</a>
+      <a href="subjects.html">📚 Subjects</a>
+      <a href="settings.html">⚙️ Settings</a>
+    </div>
+  </nav>
+
+  <main style="padding:40px 0 80px">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="page-header" style="border:none;padding-bottom:0;margin-bottom:28px">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span>›</span>
+          <a href="dashboard.html">Dashboard</a><span>›</span>
+          <span>Timetable</span>
+        </div>
+        <h1 class="slide-up">Timetable Scheduler</h1>
+        <p class="fade-in" style="color:var(--text-muted);margin-top:6px">
+          Generate a conflict-free weekly schedule across all subjects, faculty, and rooms.
+        </p>
+      </div>
+
+      <!-- Config Panel -->
+      <div class="card fade-in" style="margin-bottom:24px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;align-items:end">
+          <div class="form-group" style="margin:0">
+            <label>Department</label>
+            <select class="form-control">
+              <option>Computer Science</option>
+              <option>Electronics</option>
+              <option>Mechanical</option>
+              <option>Civil</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0">
+            <label>Semester</label>
+            <select class="form-control">
+              <option>Semester 5</option>
+              <option>Semester 3</option>
+              <option>Semester 7</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0">
+            <label>Section</label>
+            <select class="form-control">
+              <option>Section A</option>
+              <option>Section B</option>
+              <option>Section C</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin:0">
+            <label>Academic Year</label>
+            <select class="form-control">
+              <option>2024–25</option>
+              <option>2025–26</option>
+            </select>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button id="generate-btn" class="btn btn-primary" style="flex:1;justify-content:center">
+              ⚡ Generate
+            </button>
+            <button id="clear-btn" class="btn btn-ghost" style="flex:1;justify-content:center">
+              🗑 Clear
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="legend" id="subject-legend"></div>
+
+      <!-- Stats bar -->
+      <div class="tt-info fade-in" id="tt-stats" style="margin-bottom:20px;flex-wrap:wrap;gap:12px"></div>
+
+      <!-- Controls -->
+      <div class="tt-controls">
+        <button class="btn btn-ghost btn-sm" onclick="showToast('Timetable exported as PDF','success','📥')">📥 Export PDF</button>
+        <button class="btn btn-ghost btn-sm" onclick="showToast('Copied to clipboard','success','📋')">📋 Copy Link</button>
+        <button class="btn btn-ghost btn-sm" onclick="showToast('Printed successfully','info','🖨')">🖨 Print</button>
+        <span style="margin-left:auto;font-size:0.78rem;color:var(--text-muted)">Mon–Fri · 8 slots/day · 1 lunch break</span>
+      </div>
+
+      <!-- Timetable Output -->
+      <div class="card fade-in" style="padding:0;overflow:hidden">
+        <div id="timetable-output" style="padding:20px">
+          <div class="no-results">
+            <span class="nr-icon">🗓</span>
+            <h3>No timetable generated yet</h3>
+            <p>Select your preferences above and click <strong>Generate</strong> to create a conflict-free schedule.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conflict Checker info -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:24px" class="stagger">
+        <div class="card" style="text-align:center;padding:20px">
+          <div style="font-size:1.6rem;margin-bottom:8px">🧩</div>
+          <h3 style="font-size:0.9rem;margin-bottom:4px">Clash Prevention</h3>
+          <p style="font-size:0.78rem;color:var(--text-muted)">Faculty can't be double-booked across any two slots</p>
+        </div>
+        <div class="card" style="text-align:center;padding:20px">
+          <div style="font-size:1.6rem;margin-bottom:8px">🏫</div>
+          <h3 style="font-size:0.9rem;margin-bottom:4px">Room Assignment</h3>
+          <p style="font-size:0.78rem;color:var(--text-muted)">Available rooms auto-assigned per slot and capacity</p>
+        </div>
+        <div class="card" style="text-align:center;padding:20px">
+          <div style="font-size:1.6rem;margin-bottom:8px">⚖️</div>
+          <h3 style="font-size:0.9rem;margin-bottom:4px">Credit Balancing</h3>
+          <p style="font-size:0.78rem;color:var(--text-muted)">Each subject gets exactly <em>n</em> slots equal to its credits</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">🎓 SmartScheduler</div>
+        <div class="footer-links">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="classrooms.html">Classrooms</a>
+        </div>
+        <div class="footer-text">© 2024 SmartScheduler</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

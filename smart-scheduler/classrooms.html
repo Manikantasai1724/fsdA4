@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classrooms — SmartScheduler</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><div class="brand-icon">🎓</div>SmartScheduler</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="timetable.html">Timetable</a></li>
+        <li><a href="classrooms.html" class="active">Classrooms</a></li>
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="subjects.html">Subjects</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle-btn" title="Toggle theme">☀️</button>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-menu">
+      <a href="index.html">🏠 Home</a>
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="timetable.html">🗓 Timetable</a>
+      <a href="classrooms.html" class="active">🏫 Classrooms</a>
+      <a href="faculty.html">👤 Faculty</a>
+      <a href="subjects.html">📚 Subjects</a>
+      <a href="settings.html">⚙️ Settings</a>
+    </div>
+  </nav>
+
+  <main style="padding:40px 0 80px">
+    <div class="container">
+
+      <!-- Header -->
+      <div class="page-header" style="border:none;padding-bottom:0;margin-bottom:28px">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span>›</span>
+          <a href="dashboard.html">Dashboard</a><span>›</span>
+          <span>Classrooms</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px">
+          <div>
+            <h1 class="slide-up">Classroom Management</h1>
+            <p class="fade-in" style="color:var(--text-muted);margin-top:6px">
+              Monitor availability, capacity, and amenities across all rooms and labs.
+            </p>
+          </div>
+          <button class="btn btn-primary" onclick="showToast('Add classroom feature coming soon!','info','🏗')">
+            + Add Classroom
+          </button>
+        </div>
+      </div>
+
+      <!-- Summary Strip -->
+      <div class="stats-grid stagger" style="margin-bottom:28px">
+        <div class="stat-card stat-teal" style="padding:18px">
+          <div class="stat-icon" style="width:40px;height:40px;font-size:1.1rem">✅</div>
+          <div class="stat-body">
+            <div class="stat-value" style="font-size:1.6rem">6</div>
+            <div class="stat-label">Available Now</div>
+          </div>
+        </div>
+        <div class="stat-card stat-blue" style="padding:18px">
+          <div class="stat-icon" style="width:40px;height:40px;font-size:1.1rem">👥</div>
+          <div class="stat-body">
+            <div class="stat-value" style="font-size:1.6rem">810</div>
+            <div class="stat-label">Total Seats</div>
+          </div>
+        </div>
+        <div class="stat-card stat-amber" style="padding:18px">
+          <div class="stat-icon" style="width:40px;height:40px;font-size:1.1rem">🔧</div>
+          <div class="stat-body">
+            <div class="stat-value" style="font-size:1.6rem">1</div>
+            <div class="stat-label">Under Maintenance</div>
+          </div>
+        </div>
+        <div class="stat-card" style="padding:18px;border-color:var(--card-border)">
+          <div class="stat-icon" style="width:40px;height:40px;font-size:1.1rem;background:rgba(232,121,249,0.12);color:#e879f9">❄️</div>
+          <div class="stat-body">
+            <div class="stat-value" style="font-size:1.6rem">7</div>
+            <div class="stat-label">Air-Conditioned</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Rooms (9)</button>
+        <button class="filter-tab" data-filter="Available">✅ Available (6)</button>
+        <button class="filter-tab" data-filter="Occupied">🔴 Occupied (2)</button>
+        <button class="filter-tab" data-filter="Maintenance">🔧 Maintenance (1)</button>
+      </div>
+
+      <!-- Rooms Grid -->
+      <div class="rooms-grid" id="classrooms-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">🎓 SmartScheduler</div>
+        <div class="footer-links">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="timetable.html">Timetable</a>
+        </div>
+        <div class="footer-text">© 2024 SmartScheduler</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
